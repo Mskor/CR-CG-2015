@@ -10,7 +10,7 @@ public class ConfParmSubsystem {
     private AppContext ctxt;
     private static Logger log;
 
-    public void initilaize() {
+    public void initialize() {
 
         // Init logging first
         try {

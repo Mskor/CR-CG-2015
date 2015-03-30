@@ -6,6 +6,8 @@ import java.awt.event.WindowEvent;
 import java.util.logging.Logger;
 
 import com.jogamp.opengl.awt.GLCanvas;
+import oyakov.controllers.GLController;
+import oyakov.controllers.KeyboardController;
 
 import javax.swing.*;
 
@@ -13,9 +15,11 @@ public class RuntimeLauncher {
 
     private static Logger log;
 
+    private static final String TITLE = "Курсовой проект: Компьютерная графика";
+
     public static void main(String[] args) {
         ConfParmSubsystem confParmSubsystem = new ConfParmSubsystem();
-        confParmSubsystem.initilaize();
+        confParmSubsystem.initialize();
 
         log = Logger.getLogger(RuntimeLauncher.class.getName());
         log.info("ConfParmLauncher has been initialized");
@@ -27,6 +31,10 @@ public class RuntimeLauncher {
                         confParmSubsystem.getCtxt().getHEIGHT()
                 )
         );
+
+        canvas.addGLEventListener(new GLController());
+        canvas.addKeyListener(new KeyboardController());
+
         SwingUtilities.invokeLater(() -> {
             final JFrame frame = new JFrame();
             frame.getContentPane().add(canvas);
@@ -38,7 +46,7 @@ public class RuntimeLauncher {
                         }
                     }
             );
-            frame.setTitle("Title");
+            frame.setTitle(TITLE);
             frame.pack();
             frame.setVisible(true);
         });
