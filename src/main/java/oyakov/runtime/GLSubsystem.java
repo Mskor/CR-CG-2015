@@ -52,6 +52,9 @@ public class GLSubsystem {
         canvas.addKeyListener(new KeyboardController());
         canvas.addGLEventListener(new GLController());
 
+        canvas.setFocusable(true);
+        canvas.requestFocus();
+
         animator = new FPSAnimator(canvas, 60, true);
 
         frame = new JFrame(ConfParmSubsystem.getInstance().getCtxt().getTITLE());

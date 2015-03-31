@@ -66,7 +66,9 @@ public class FSEntityLoader {
             log.info("Forming an Entity...");
 
             for(int i = 0; i < vertices.size() / 3; i++) {
-                Triangle t = new Triangle(vertices.get(i), vertices.get(i + 1), vertices.get(i + 2));
+                Triangle t = new Triangle(vertices.get(3 * i),
+                        vertices.get(3 * i + 1),
+                        vertices.get(3 * i + 2));
                 triangles.add(t);
             }
 

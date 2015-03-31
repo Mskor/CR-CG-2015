@@ -20,14 +20,16 @@ public class Triangle implements Renderable {
     @Override
     public void renderSelf(GL2 context, GLU glUtils) {
         context.glBegin(GL.GL_TRIANGLES);
+            context.glColor3f(1.0f, 0.0f, 0.0f);
             context.glVertex3f(vertices[0].x, vertices[0].y, vertices[0].z);
+            context.glColor3f(0.0f, 1.0f, 0.0f);
             context.glVertex3f(vertices[1].x, vertices[1].y, vertices[1].z);
+            context.glColor3f(0.0f, 0.0f, 1.0f);
             context.glVertex3f(vertices[2].x, vertices[2].y, vertices[2].z);
         context.glEnd();
     }
 
     public String toString() {
-
         StringBuilder strb = new StringBuilder();
         strb.append(vertices[0]);
         strb.append(System.getProperty("line.separator"));

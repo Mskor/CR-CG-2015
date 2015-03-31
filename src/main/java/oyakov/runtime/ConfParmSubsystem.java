@@ -100,5 +100,7 @@ public class ConfParmSubsystem {
         public String getTITLE() {
             return TITLE;
         }
+
+        public float cameraAngleX=0.0f, cameraAngleY=0.0f, cameraAngleZ=0.0f;
     }
 }

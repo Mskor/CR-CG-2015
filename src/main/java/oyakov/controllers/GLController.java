@@ -5,6 +5,7 @@ import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
 import oyakov.model.type.Entity;
+import oyakov.runtime.ConfParmSubsystem;
 import oyakov.runtime.GLSubsystem;
 
 import static com.jogamp.opengl.GL.*;  // GL constants
@@ -41,6 +42,11 @@ public class GLController implements GLEventListener{
         GL2 gl = glAutoDrawable.getGL().getGL2();
         gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
+
+        ConfParmSubsystem.AppContext appContext = ConfParmSubsystem.getInstance().getCtxt();
+
+        gl.glRotatef(appContext.cameraAngleX, 1.0f, 0.0f, 0.0f);
+        gl.glRotatef(appContext.cameraAngleY, 0.0f, 1.0f, 0.0f);
 
         Entity e = GLSubsystem.getInstance().getEntity("geometry");
         e.renderSelf(gl, glUtils);
