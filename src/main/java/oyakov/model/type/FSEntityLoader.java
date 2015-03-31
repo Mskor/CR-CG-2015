@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  * Created by oyakovlev on 30.03.2015.
  */
 public class FSEntityLoader {
-    private static Logger log = Logger.getLogger(FSEntityLoader.class.getName());
+    private static final Logger log = Logger.getLogger(FSEntityLoader.class.getName());
 
     public FSEntityLoader() {
 

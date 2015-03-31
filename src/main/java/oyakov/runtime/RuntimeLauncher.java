@@ -1,11 +1,9 @@
 package oyakov.runtime;
 import java.util.logging.Logger;
 
-public class RuntimeLauncher {
+class RuntimeLauncher {
 
     private static Logger log;
-
-    private static final String TITLE = "Курсовой проект: Компьютерная графика";
 
     public static void main(String[] args) {
         ConfParmSubsystem confParmSubsystem = ConfParmSubsystem.getInstance();

@@ -69,7 +69,7 @@ public class ConfParmSubsystem {
             }
         }
 
-        static protected AppContext loadContext() {
+        static AppContext loadContext() {
             Properties props = new Properties();
             try{
                 props.load(ConfParmSubsystem.class.getResourceAsStream("/appcontext.properties"));
@@ -80,22 +80,22 @@ public class ConfParmSubsystem {
             return new AppContext(props);
         }
 
-        private int WIDTH;
+        private final int WIDTH;
         private final int DEFAULT_WIDTH = 800;
 
         public int getWIDTH() {
             return WIDTH;
         }
 
-        private int HEIGHT;
+        private final int HEIGHT;
         private final int DEFAULT_HEIGHT = 600;
 
         public int getHEIGHT() {
             return HEIGHT;
         }
 
-        private String TITLE;
-        private String DEFAULT_TITLE = "Title didn't get loaded...";
+        private final String TITLE;
+        private final String DEFAULT_TITLE = "Title didn't get loaded...";
 
         public String getTITLE() {
             return TITLE;

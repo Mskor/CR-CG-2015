@@ -3,7 +3,7 @@ package oyakov.model.type;
 /**
  * Created by oyakovlev on 30.03.2015.
  */
-public class Vertex {
+class Vertex {
     public float x, y, z,
             u, v;
 

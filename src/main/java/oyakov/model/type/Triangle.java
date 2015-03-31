@@ -9,13 +9,7 @@ import com.jogamp.opengl.glu.GLU;
  */
 public class Triangle implements Renderable {
 
-    Vertex[] vertices = new Vertex[3];
-
-    public Triangle() {
-        vertices[0] = new Vertex();
-        vertices[1] = new Vertex();
-        vertices[2] = new Vertex();
-    }
+    private final Vertex[] vertices = new Vertex[3];
 
     public Triangle(Vertex v0, Vertex v1, Vertex v2) {
         vertices[0] = v0;

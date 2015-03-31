@@ -39,7 +39,7 @@ public class GLSubsystem {
 
     private Map<String, Entity> entityCache;
 
-    private static Logger log = Logger.getLogger(GLSubsystem.class.getName());
+    private static final Logger log = Logger.getLogger(GLSubsystem.class.getName());
 
     public void initialize() {
         GLCanvas canvas = new GLCanvas();

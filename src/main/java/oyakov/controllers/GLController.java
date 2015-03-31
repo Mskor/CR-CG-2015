@@ -15,7 +15,7 @@ import static com.jogamp.opengl.GL2.*; // GL2 constants
  */
 public class GLController implements GLEventListener{
 
-    GLU glUtils;
+    private GLU glUtils;
 
     /**
      * Called back immediately after the OpenGL context is initialized. Can be used
