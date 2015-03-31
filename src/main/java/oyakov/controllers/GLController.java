@@ -4,6 +4,9 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
+import oyakov.model.type.Entity;
+import oyakov.runtime.GLSubsystem;
+
 import static com.jogamp.opengl.GL.*;  // GL constants
 import static com.jogamp.opengl.GL2.*; // GL2 constants
 
@@ -35,7 +38,12 @@ public class GLController implements GLEventListener{
      */
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
+        GL2 gl = glAutoDrawable.getGL().getGL2();
+        gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity();
 
+        Entity e = GLSubsystem.getInstance().getEntity("geometry");
+        e.renderSelf(gl, glUtils);
     }
 
     /**

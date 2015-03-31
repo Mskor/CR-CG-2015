@@ -16,6 +16,7 @@ public class Vertex {
         this.u = u;
         this.v = v;
     }
+
     public String toString() {
         return "[" + x + ", " + y + ", " + z + "]" + " [" + u + ", " + v + "]";
     }

@@ -7,6 +7,17 @@ import java.util.logging.Logger;
 
 public class ConfParmSubsystem {
 
+    private static ConfParmSubsystem instance;
+
+    public static ConfParmSubsystem getInstance() {
+        if(instance == null) {
+            instance = new ConfParmSubsystem();
+        }
+        return instance;
+    }
+
+    private ConfParmSubsystem() {}
+
     private AppContext ctxt;
     private static Logger log;
 
@@ -28,7 +39,7 @@ public class ConfParmSubsystem {
         ctxt = AppContext.loadContext();
     }
 
-    AppContext getCtxt() {
+    public AppContext getCtxt() {
         return ctxt;
     }
 
@@ -48,6 +59,13 @@ public class ConfParmSubsystem {
                 HEIGHT = Integer.parseInt(currentProperty);
             } else {
                 HEIGHT = DEFAULT_HEIGHT;
+            }
+
+            currentProperty = props.getProperty("title");
+            if(currentProperty != null) {
+                TITLE = currentProperty;
+            } else {
+                TITLE = DEFAULT_TITLE;
             }
         }
 
@@ -74,6 +92,13 @@ public class ConfParmSubsystem {
 
         public int getHEIGHT() {
             return HEIGHT;
+        }
+
+        private String TITLE;
+        private String DEFAULT_TITLE = "Title didn't get loaded...";
+
+        public String getTITLE() {
+            return TITLE;
         }
     }
 }

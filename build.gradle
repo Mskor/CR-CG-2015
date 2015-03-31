@@ -13,6 +13,7 @@ processResources {
     from('./src/main/java/') {
         include 'logging.properties'
         include 'appcontext.properties'
+        include 'geometry'
     }
 }
 
