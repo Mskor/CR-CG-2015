@@ -5,8 +5,11 @@ import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
 import oyakov.model.type.Entity;
+import oyakov.model.type.Renderable;
 import oyakov.runtime.ConfParmSubsystem;
 import oyakov.runtime.GLSubsystem;
+
+import java.util.logging.Logger;
 
 import static com.jogamp.opengl.GL.*;  // GL constants
 import static com.jogamp.opengl.GL2.*; // GL2 constants
@@ -15,6 +18,8 @@ import static com.jogamp.opengl.GL2.*; // GL2 constants
  * Created by oyakovlev on 28.03.2015.
  */
 public class GLController implements GLEventListener{
+
+    private static final Logger log = Logger.getLogger(GLController.class.getName());
 
     private GLU glUtils;
 
@@ -45,11 +50,28 @@ public class GLController implements GLEventListener{
 
         ConfParmSubsystem.AppContext appContext = ConfParmSubsystem.getInstance().getCtxt();
 
+        gl.glTranslatef(0.0f, 0.0f, -6.0f);
         gl.glRotatef(appContext.cameraAngleX, 1.0f, 0.0f, 0.0f);
         gl.glRotatef(appContext.cameraAngleY, 0.0f, 1.0f, 0.0f);
+        gl.glRotatef(appContext.cameraAngleZ, 0.0f, 0.0f, 1.0f);
 
-        Entity e = GLSubsystem.getInstance().getEntity("geometry");
-        e.renderSelf(gl, glUtils);
+        try{
+            Renderable house, left_wing, right_wing;
+
+            house = GLSubsystem.getInstance().getEntity("house");
+            house.renderSelf(gl, glUtils);
+
+            left_wing = GLSubsystem.getInstance().getEntity("left_wing");
+            left_wing.renderSelf(gl, glUtils);
+
+            right_wing = GLSubsystem.getInstance().mirrorX("right_wing", left_wing);
+            right_wing.renderSelf(gl, glUtils);
+
+        } catch (Exception ex) {
+            //TODO: Custom exception type
+            log.info("Couldn't load geometry");
+            log.info(ex.getMessage());
+        }
     }
 
     /**

@@ -29,6 +29,19 @@ public class Triangle implements Renderable {
         context.glEnd();
     }
 
+    @Override
+    public Renderable mirrorX() {
+        Vertex v0 = new Vertex(vertices[0]),
+                v1 = new Vertex(vertices[1]),
+                 v2 = new Vertex(vertices[2]);
+
+        v0.x = -v0.x;
+        v1.x = -v1.x;
+        v2.x = -v2.x;
+
+        return new Triangle(v0, v1, v2);
+    }
+
     public String toString() {
         StringBuilder strb = new StringBuilder();
         strb.append(vertices[0]);

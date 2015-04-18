@@ -6,6 +6,7 @@ import oyakov.controllers.GLController;
 import oyakov.controllers.KeyboardController;
 import oyakov.model.type.Entity;
 import oyakov.model.type.FSEntityLoader;
+import oyakov.model.type.Renderable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +38,7 @@ public class GLSubsystem {
 
     private FSEntityLoader fsEntityLoader;
 
-    private Map<String, Entity> entityCache;
+    private Map<String, Renderable> entityCache;
 
     private static final Logger log = Logger.getLogger(GLSubsystem.class.getName());
 
@@ -83,18 +84,28 @@ public class GLSubsystem {
         animator.start();
     }
 
-    public Entity getEntity(String key) {
+    public Renderable getEntity(String key) {
         if(entityCache.containsKey(key)) {
             return entityCache.get(key);
         } else {
             try{
-                Entity e = fsEntityLoader.loadEntity(key);
+                Renderable e = fsEntityLoader.loadEntity(key);
                 entityCache.put(key, e);
                 return e;
             } catch (IOException ioe) {
                 log.info("Failed to load entity...");
                 return null;
             }
+        }
+    }
+
+    public Renderable mirrorX(String key, Renderable prototype) {
+        if(entityCache.containsKey(key)) {
+            return entityCache.get(key);
+        } else {
+            Renderable reflection = prototype.mirrorX();
+            entityCache.put(key, reflection);
+            return reflection;
         }
     }
 }

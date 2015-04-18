@@ -21,7 +21,7 @@ public class FSEntityLoader {
     public Entity loadEntity(String source) throws IOException{
         BufferedReader in = null;
         List<Vertex> vertices = new ArrayList<>();
-        List<Triangle> triangles = new ArrayList<>();
+        List<Renderable> triangles = new ArrayList<>();
 
         try {
             in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/" + source)));

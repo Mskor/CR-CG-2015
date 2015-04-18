@@ -6,6 +6,8 @@ import com.jogamp.opengl.glu.GLU;
 /**
  * Created by oyakovlev on 30.03.2015.
  */
-interface Renderable {
+public interface Renderable {
     void renderSelf(GL2 context, GLU glUtils);
+
+    Renderable mirrorX();
 }

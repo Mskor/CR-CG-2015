@@ -9,6 +9,14 @@ class Vertex {
 
     public Vertex() {}
 
+    public Vertex(Vertex proto) {
+        x = proto.x;
+        y = proto.y;
+        z = proto.z;
+        u = proto.u;
+        v = proto.v;
+    }
+
     public Vertex(float x, float y, float z, float u, float v) {
         this.x = x;
         this.y = y;

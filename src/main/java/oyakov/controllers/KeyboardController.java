@@ -5,10 +5,7 @@ import oyakov.runtime.ConfParmSubsystem;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static java.awt.event.KeyEvent.VK_W;
-import static java.awt.event.KeyEvent.VK_A;
-import static java.awt.event.KeyEvent.VK_D;
-import static java.awt.event.KeyEvent.VK_S;
+import static java.awt.event.KeyEvent.*;
 
 /**
  * Created by oyakovlev on 28.03.2015.
@@ -34,6 +31,12 @@ public class KeyboardController implements KeyListener{
                 break;
             case VK_D:
                 appContext.cameraAngleY+=1.0f;
+                break;
+            case VK_Q:
+                appContext.cameraAngleZ-=1.0f;
+                break;
+            case VK_E:
+                appContext.cameraAngleZ+=1.0f;
                 break;
         }
     }
