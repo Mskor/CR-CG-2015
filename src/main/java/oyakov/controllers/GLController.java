@@ -4,7 +4,6 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
-import oyakov.model.type.Entity;
 import oyakov.model.type.Renderable;
 import oyakov.runtime.ConfParmSubsystem;
 import oyakov.runtime.GLSubsystem;
@@ -50,22 +49,30 @@ public class GLController implements GLEventListener{
 
         ConfParmSubsystem.AppContext appContext = ConfParmSubsystem.getInstance().getCtxt();
 
-        gl.glTranslatef(0.0f, 0.0f, -6.0f);
+        gl.glTranslatef(appContext.cameraOffsetX, appContext.cameraOffsetY, appContext.cameraOffsetZ);
         gl.glRotatef(appContext.cameraAngleX, 1.0f, 0.0f, 0.0f);
         gl.glRotatef(appContext.cameraAngleY, 0.0f, 1.0f, 0.0f);
         gl.glRotatef(appContext.cameraAngleZ, 0.0f, 0.0f, 1.0f);
 
-        try{
+        try {
             Renderable house, left_wing, right_wing;
 
             house = GLSubsystem.getInstance().getEntity("house");
             house.renderSelf(gl, glUtils);
 
             left_wing = GLSubsystem.getInstance().getEntity("left_wing");
+
+            gl.glTranslatef(0.0f, 1.0f, 0.0f);
+
+            gl.glRotatef(appContext.leftWingAngle, 0.0f, 0.0f, 1.0f);
             left_wing.renderSelf(gl, glUtils);
+            gl.glRotatef(appContext.leftWingAngle, 0.0f, 0.0f, -1.0f);
 
             right_wing = GLSubsystem.getInstance().mirrorX("right_wing", left_wing);
+
+            gl.glRotatef(appContext.rightWingAngle, 0.0f, 0.0f, 1.0f);
             right_wing.renderSelf(gl, glUtils);
+            gl.glRotatef(appContext.rightWingAngle, 0.0f, 0.0f, -1.0f);
 
         } catch (Exception ex) {
             //TODO: Custom exception type

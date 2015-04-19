@@ -38,6 +38,52 @@ public class KeyboardController implements KeyListener{
             case VK_E:
                 appContext.cameraAngleZ+=1.0f;
                 break;
+            case VK_LEFT:
+                appContext.cameraOffsetX-=1.0f;
+                break;
+            case VK_RIGHT:
+                appContext.cameraOffsetX+=1.0f;
+                break;
+            case VK_UP:
+                appContext.cameraOffsetY+=1.0f;
+                break;
+            case VK_DOWN:
+                appContext.cameraOffsetY-=1.0f;
+                break;
+            case VK_PAGE_UP:
+                appContext.cameraOffsetZ+=1.0f;
+                break;
+            case VK_PAGE_DOWN:
+                appContext.cameraOffsetZ-=1.0f;
+                break;
+            case VK_I:
+                if(appContext.leftWingAngle < 0.0f)
+                    appContext.leftWingAngle+=1.0f;
+                break;
+            case VK_O:
+                if(-appContext.leftWingAngle + appContext.rightWingAngle == 180.0f) {
+                    if(appContext.rightWingAngle > 0.0f) {
+                        appContext.leftWingAngle-=1.0f;
+                        appContext.rightWingAngle-=1.0f;
+                    }
+                } else {
+                    appContext.leftWingAngle-=1.0f;
+                }
+                break;
+            case VK_K:
+                if(-appContext.leftWingAngle + appContext.rightWingAngle == 180.0f) {
+                    if(appContext.leftWingAngle < 0.0f) {
+                        appContext.leftWingAngle+=1.0f;
+                        appContext.rightWingAngle+=1.0f;
+                    }
+                } else {
+                    appContext.rightWingAngle+=1.0f;
+                }
+                break;
+            case VK_L:
+                if(appContext.rightWingAngle > 0.0f)
+                    appContext.rightWingAngle-=1.0f;
+                break;
         }
     }
 

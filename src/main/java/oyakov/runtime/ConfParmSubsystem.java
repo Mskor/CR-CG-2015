@@ -102,5 +102,9 @@ public class ConfParmSubsystem {
         }
 
         public float cameraAngleX=0.0f, cameraAngleY=0.0f, cameraAngleZ=0.0f;
+
+        public float cameraOffsetX=0.0f, cameraOffsetY=0.0f, cameraOffsetZ=-6.0f;
+
+        public float leftWingAngle=-30.0f, rightWingAngle=90.0f;
     }
 }
